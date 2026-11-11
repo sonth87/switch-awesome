@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#14122a">
+<title>Material Studies</title>
+<style>
+:root{--bg:#14122a;--fg:236,234,248;--line:rgba(var(--fg),.16);--mut:rgba(var(--fg),.68)}
+@media (prefers-color-scheme:light){:root{--bg:#e4e2ec;--fg:28,25,48}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:rgb(var(--fg))}
+body{font:14px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1040px;margin:0 auto;padding:clamp(28px,7vh,72px) 16px 48px}
+.kicker{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);border-top:1px solid var(--line);padding-top:10px}
+h1{font:italic 400 clamp(40px,9vw,84px)/1 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;letter-spacing:-.02em;margin:.4em 0 .22em}
+.lede{margin:0 0 clamp(28px,6vh,56px);max-width:48ch;color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:28px}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(var(--fg),.04)}
+.shot{display:block;aspect-ratio:1600/620;background:#222;overflow:hidden}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .shot img{transform:scale(1.03)}
+.body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.no{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+h2{margin:0;font:italic 400 28px/1.1 "Iowan Old Style",Palatino,Georgia,serif}
+.body p{margin:2px 0 8px;color:var(--mut);flex:1}
+.tags{font:12px ui-monospace,Menlo,Consolas,monospace;color:var(--mut)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:inherit;text-decoration:none;background:none;border:1px solid rgba(var(--fg),.4);border-radius:999px;padding:8px 16px;cursor:pointer}
+.btn:hover{background:rgba(var(--fg),.1)}
+.btn.main{background:rgb(var(--fg));color:var(--bg);border-color:transparent}
+.btn.main:hover{opacity:.88;background:rgb(var(--fg))}
+.btn:focus-visible{outline:2px solid rgb(var(--fg));outline-offset:2px}
+footer{margin-top:48px;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker"><span>Material Studies</span><span>WebGL + Web Audio · single-file pages</span></div>
+  <h1>Material Studies.</h1>
+  <p class="lede">A series of small, self-contained web studies. Open one, or copy the prompt that made it.</p>
+
+  <div class="grid">
+    <article class="card">
+      <a class="shot" href="daybreak-switch/daybreak-switch.html" aria-label="Open Daybreak Switch"><img src="assets/daybreak-switch.jpg" alt="Daybreak Switch: a jelly-glass knob over a pixel-art room, half day and half night" width="1600" height="620" loading="lazy"></a>
+      <div class="body">
+        <span class="no">No. 062</span>
+        <h2>Daybreak Switch.</h2>
+        <p>A night-to-morning toggle. Drag a jelly-glass knob and the dawn crosses a pixel-art room, waking the cat, lighting the bulbs and bringing in the music.</p>
+        <span class="tags">WebGL2 · Web Audio · 2D pixel buffer</span>
+        <div class="row">
+          <a class="btn main" href="daybreak-switch/daybreak-switch.html">Open</a>
+          <button class="btn" type="button" data-copy="brief-062">Copy prompt</button>
+          <a class="btn" href="daybreak-switch/README.md">README</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <footer>Add a study: put it in its own folder, drop a screenshot in <code>assets/</code>, and add a card above.</footer>
+</main>
+<script type="application/json" id="brief-062">"Make \"Daybreak Switch\", No. 062 in a series of web material studies: a night-to-morning toggle in its own original style, as a single self-contained page (no libraries; raw WebGL2 + Web Audio + a 2D pixel buffer). Editorial layout: a small \"Material Studies / No. 062 · WebGL + Web Audio\" kicker, an italic serif title \"Daybreak Switch.\", a one-line caption; the switch centred and large; below it readouts (Clock, Light, Music), a hint line and a \"Sound on/off\" button. The whole page's colours (background, text, lines) follow the switch from a dark dusk-indigo at night to a pale lavender-grey by day. Works at phone width.\n\nTHE SWITCH\n- A pill-shaped switch in a moulded bezel: white glossy plastic by day, graphite by night. A soft drop shadow falls on the page and fades to nothing before the canvas edge, with a slight inner shadow along the top of the track.\n- Inside, a 176×50 pixel-art room, redrawn every frame on the CPU and shown with nearest sampling, never smoothed. Whole device pixels per scene pixel where there is room.\n- The knob is a vertical capsule of clear jelly glass, a little taller than the track, drawn in one full-canvas WebGL2 fragment shader:\n  - it magnifies (~1.28×) and bends the pixels under it;\n  - it splits R/G/B at its rim, with a darker refraction band, a bright edge and a Fresnel tint;\n  - two highlights: a long soft streak at the upper left and a small dot at the lower right;\n  - light focused toward its foot, and a soft shadow on the room.\n- The knob lags the finger on a spring, stretches horizontally with speed (squashing vertically to keep its volume), and wobbles on a damped spring fed by its acceleration.\n- Inside the knob the room is always shown fully lit: the glass carries the morning.\n- Controls: drag the knob or drag anywhere on the track; tap to toggle to the other end (it travels there on its spring); arrow keys, Home/End, Space/Enter; role=\"slider\" with aria values.\n\nTHE ROOM (original, cosy palette)\nBuilt from filled shapes stamped with an automatic 1-px outline and a light top / dark bottom, so every object reads as a pixel sprite:\n- butter-yellow diamond wallpaper, teal wainscot, plank floor, a coral/cream/teal striped rug;\n- a big window with curtains over a town of roofs;\n- a shelf of coloured jelly jars and books, a potted plant;\n- a brass floor lamp with a mint shade;\n- a red boombox on a wooden cabinet, a framed picture of a little jelly shark, a round wall clock, a blue panelled door;\n- a string of coloured bulbs sagging across the ceiling;\n- a purple pet bed under the window.\n\nLIGHT AND THE MORNING\n- The knob drags the dawn across the room: left of it is day, right of it still night (indigo ambient). The edge dissolves in a 4×4 Bayer dither, with a warm dawn band just behind the knob.\n- The window sky runs from night (navy, twinkling stars, a crescent moon, lit town windows) through dawn (violet to peach, the sun coming up) to day (blue, sun high, clouds drifting).\n- Moonlight shafts through the window at night, warm sun shafts by day.\n- The lamp clicks on early and casts a banded warm pool.\n- Each ceiling bulb lights as the knob passes it, with a coloured dithered glow.\n- Disco spots sweep the room at the party.\n- The wall clock runs from 02:00 to 10:00.\n\nTHE STORY, BY POSITION\n- An orange tabby cat:\n  - asleep, curled in its bed, breathing, with z's rising;\n  - awake, lying with its head up and blinking;\n  - sitting up;\n  - standing and walking out onto the rug;\n  - at the end dancing on its hind legs to the beat, in sunglasses, with pink ghost trails.\n- The plant sways and the boombox speakers thump with the beat; music notes float up from the boombox.\n- A disco ball comes down from the ceiling; confetti sparkles fall.\n- Glowing crescent echoes (coral to pink) trail behind the moving knob.\n- Near the end (from about 08:24 on the clock) a puppy waits outside: warm light shows under the door with the shadows of its shifting paws, and it knocks. On each knock the door jolts 2 px, arcs of sound spring off it, and a \"!\" pops up over the cat; the knocking repeats every ~2.8 s until it's let in. At the very end the door swings open on a warm orange hallway and a white puppy with brown ears comes in, bobbing to the beat.\n\nSOUND — all synthesised live with Web Audio, original music\n- 100 BPM, a four-bar loop in F (Fmaj7 · Am7 · Dm7 · B♭maj7), on one lookahead-scheduled clock with a little swing.\n- Layers fade in by the knob's position:\n  0. Night: crickets (AM-chirped sine trains) and soft wind.\n  1. A music box arpeggiating the chords (bell partials, short room reverb).\n  2. A lo-fi beat (kick, noise-and-tone snare, hats) and a round bass.\n  3. Warm detuned pads and a square-wave tune with vibrato.\n  4. The party: four on the floor, claps, open hats, sub bass, the rest of the mix pumping under the kick.\n- The music sits behind a low-pass that opens with the dawn, and ~5 dB under the switch's own sounds.\n- Switch sounds:\n  - a glass tink plus a jelly blop when grabbed, a plop when released;\n  - a band-passed noise rub following the drag speed;\n  - a pentatonic pluck for every bulb lit (a glissando when you sweep across), softer and lower when one goes out;\n  - the lamp's double click and a cat's \"mrrp\" (formant-filtered saw) when it wakes;\n  - a riser and crash into the party, and a record-brake when you drag back out of the beat;\n  - the puppy's yip when it comes in.\n- The knock, like a real heavy door knock: three hits 0.25 s apart, panned toward the door. Each hit is a knuckle click (band-passed noise) over a deep thump that sags from ~98 to ~60 Hz over a quarter second, with quicker overtones (190→128 Hz, 410 Hz) and soft saturation so small speakers hear it. The music ducks to ~45% under each hit, and the knocks peak at 3–4× the music's level.\n- Audio starts on the first touch; a Sound on/off button.\n- Readouts: Clock (02:00–10:00), Light (Night / First light / Sunrise / Morning / Party), Music (Crickets / Music box / Beat / Band / Party).\n"</script>
+<script>
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-copy]');if(!b)return;
+  const text=JSON.parse(document.getElementById(b.dataset.copy).textContent),old=b.textContent;
+  try{await navigator.clipboard.writeText(text);}
+  catch(_){const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(__){}t.remove();}
+  b.textContent='Copied';setTimeout(()=>b.textContent=old,1600);
+});
+</script>
+</body>
+</html>
