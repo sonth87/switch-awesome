@@ -1353,6 +1353,12 @@ function setSound(on){
 let wantSound=true;
 const firstTouch=()=>{if(wantSound&&!A.on)setSound(true);};
 sndBtn.addEventListener('click',()=>{wantSound=!A.on;setSound(!A.on);});
+/* a touch pointerdown does not count as a gesture that may start audio (mobile Chrome, Safari), so the context can be
+   born suspended: resume it again on release / click / key, and play one silent sample so iOS unlocks output */
+let unlocked=false;
+const unlock=()=>{if(!A.ctx||!A.on)return;if(A.ctx.state!=='running')A.ctx.resume();
+  if(!unlocked){unlocked=true;try{const b=A.ctx.createBuffer(1,1,A.ctx.sampleRate),s=A.ctx.createBufferSource();s.buffer=b;s.connect(A.ctx.destination);s.start();}catch(_){}}};
+for(const ev of['pointerup','touchend','click','keydown'])document.addEventListener(ev,unlock,true);
 
 /* ───────────── input ───────────── */
 let drag=null;
