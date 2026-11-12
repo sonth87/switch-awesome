@@ -8,6 +8,9 @@ assets/                          screenshots used by the gallery
 daybreak-switch/
   daybreak-switch.html           No. 062, the study itself (single file, no libraries)
   README.md  BRIEF.md            its notes and the original prompt
+neon-coast-switch/
+  neon-coast-switch.html         No. 066, the study itself (single file, no libraries)
+  README.md  BRIEF.md            its notes and the original prompt
 ```
 
 To add a study: give it its own folder, put a screenshot in `assets/`, and add a card in `index.html`.
