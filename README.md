@@ -20,6 +20,9 @@ east-blue-duel-switch/
 bear-cave-solstice-switch/
   bear-cave-solstice-switch.html No. 062, the study itself (single file, no libraries)
   README.md  BRIEF.md            its notes and the original prompt
+around-the-world-switch/
+  around-the-world-switch.html   No. 062, the study itself (single file, no libraries)
+  README.md  BRIEF.md            its notes and the original prompt
 ```
 
 To add a study: give it its own folder, put a screenshot in `assets/`, and add a card in `index.html`.
